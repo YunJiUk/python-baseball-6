@@ -66,6 +66,10 @@ def main():
             result = compare_numbers(user_input, list(map(str, random_numbers)))
             print(result)
 
+            # 3 스트라이크면 게임 종료
+            if result == "3 스트라이크, 0 볼":
+                print("축하합니다! 숫자를 모두 맞추셨습니다.")
+                break
         except ValueError as e:
             print(f"에러: {e}")
             sys.exit(1)  # 애플리케이션 종료
