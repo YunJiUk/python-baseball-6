@@ -47,21 +47,17 @@ def main():
             # 사용자 입력 받기
             user_input = input("3자리 숫자를 입력하세요: ")
 
-            try:
-                # 입력값이 유효한지 확인
-                is_valid_input(user_input)
+            # 입력값이 유효한지 확인, 예외 발생 시 그대로 던지기
+            is_valid_input(user_input)
                 
-                # 숫자 비교 후 결과 출력
-                result = compare_numbers(user_input, list(map(str, random_numbers)))
-                print(result)
+            # 숫자 비교 후 결과 출력
+            result = compare_numbers(user_input, list(map(str, random_numbers)))
+            print(result)
 
-                # 3 스트라이크면 게임 종료
-                if result == "3 스트라이크, 0 볼":
-                    print("축하합니다! 숫자를 모두 맞추셨습니다.")
-                    break
-            except ValueError as e:
-                print(f"에러: {e}")
-                sys.exit(1)  # 애플리케이션 종료
+            # 3 스트라이크면 게임 종료
+            if result == "3 스트라이크, 0 볼":
+                print("축하합니다! 숫자를 모두 맞추셨습니다.")
+                break
     
     while True:
         play_game()  # 게임 한 번 실행
@@ -74,10 +70,9 @@ def main():
                 break  # 게임을 다시 시작 (play_game 호출)
             elif choice == '2':
                 print("게임을 종료합니다.")
-                sys.exit(0)  # 프로그램 완전 종료
+                return  # sys.exit(0) 대신 return으로 종료
             else:
                 print("잘못된 입력입니다. 1 또는 2를 입력하세요.")
 
 if __name__ == "__main__":
-    # 프로그램이 직접 실행될 때만 main() 함수를 호출
     main()
