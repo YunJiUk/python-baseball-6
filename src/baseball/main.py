@@ -1,4 +1,5 @@
 import random
+import sys
 
 def main():
     """
@@ -13,7 +14,7 @@ def main():
 
     def is_valid_input(user_input):
         # 입력값이 3자리 숫자인지 확인
-        if len(user_input) != 3 or not user_input.isdigit():
+        if len(user_input) != 3 :
             return False
 
         # 숫자가 서로 다른지 확인
@@ -22,7 +23,17 @@ def main():
 
         return True
     
-    check = is_valid_input(random_numbers)
+    print(random_numbers)
+    
+
+    try:
+        check = is_valid_input(random_numbers)
+        if check:
+            print("유효한 입력입니다:", random_numbers)
+    except ValueError as e:
+        print(f"에러: {e}")
+        sys.exit(1)  # 애플리케이션 종료
+
 
     # 프로그램의 메인 로직을 여기에 구현
 
